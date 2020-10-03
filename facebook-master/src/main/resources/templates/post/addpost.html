@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html  lang="en"
+        xmlns:th="http://www.thymeleaf.org"
+        xmlns:sec="http://www.thymeleaf.org/extras/spring-security" >
+
+<head th:replace="main/layout :: header"></head>
+<body>
+
+<nav th:replace="main/layout :: navbar"></nav>
+
+
+<div class="container">
+    <div class="panel panel-info">
+        <div class="panel-heading">new post</div>
+        <!--        -->
+        <div class="panel-body">
+            <div >
+                <form class="form-horizontal" th:action="@{/addpost}" th:object="${post}" method="POST">
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="text"></label>
+                        <div class="col-sm-8" >
+<!--                            <input type="text" class="form-control" id="text" placeholder="Enter a post" th:field="*{text}">-->
+                            <textarea class="form-control" rows="2" type="text" id="text" placeholder="Enter a post" th:field="*{text}"></textarea>
+                            <span th:if="${#fields.hasErrors('text')}" th:errors="*{text}" class="error">Name Error</span>
+                        </div>
+                        <label class="control-label col-sm-2" for="text"></label>
+
+                        <label class="control-label col-sm-2" for="user"> </label>
+                        <span class="col-sm-10" sec:authorize="isAuthenticated()">
+                            <input type="hidden" name="user" id="user" th:value="${userId}"/>
+                        </span>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-sm-4" for="text"></label>
+                        <div class="col-sm-4" >
+                            <div class="btn-group btn-group-justified">
+                                <div class="btn-group">
+<!--                            <button type="submit" class="btn btn-info btn-sm" style="width:80;margin:0px auto;">Post</button>-->
+                                <button type="submit" class="btn btn-info">Post</button>
+                                </div>
+                            </div>
+                        </div>
+                        <label class="control-label col-sm-4" for="text"></label>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end of container  -->
+
+<div th:replace="main/layout :: footer"></div>
+</body>
+</html>

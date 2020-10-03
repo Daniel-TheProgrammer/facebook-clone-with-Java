@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html
+        xmlns:th="http://www.thymeleaf.org"
+        xmlns:sec="http://www.thymeleaf.org/extras/spring-security" >
+
+<head th:fragment="header">
+        <title>Home</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+<!--        <meta th:name="${_csrf.parameterName}" th:content="${_csrf.token}"/>-->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" rel="stylesheet" type="text/css" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<!--        <script src="http://code.jquery.com/jquery-1.10.2.js"></script>-->
+        <link rel="stylesheet" th:href="@{/css/formatting.css}">
+        <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+<!--        <script src="webjars/bootstrap/4.0.0/js/bootstrap.min.js"></script>-->
+<!--        <script src="webjars/jquery/3.0.0/jquery.min.js"></script>-->
+    </head>
+
+
+<nav th:fragment ="navbar" class="navbar navbar-expand-lg navbar-dark bg-dark">
+<!--    class="navbar navbar-inverse"-->
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" th:href="@{/}">Facebook</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li class="active"><a th:href="@{/addpost}">Add</a></li>
+            <li class="active"><a th:href="@{/posts}">Posts</a></li>
+        </ul>
+        <form class="navbar-form navbar-left" action="/action_page.php">
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="Search">
+            </div>
+            <button type="submit" class="btn btn-default">Submit</button>
+        </form>
+        <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown" sec:authorize="isAuthenticated()">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                    <span sec:authentication="name"></span>&nbsp;&nbsp; <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                    <!--                    <li><a th:href="@{|/profile/${userId}|}"> profile </a></li>-->
+                    <li><a th:href="@{|/profile/${userId}|}"> profile </a></li>
+                    <!--                    <li><a th:href="@{/profile/2}">Posts</a></li>-->
+                    <li><a href="#"> <span></span></a></li>
+                </ul>
+            </li>
+<!--                <th:block th:with="flowersx = ${ {'Lily','james'} }">-->
+<!--                <th:block th:with="flowersx = ${ {'Lily'} }"> -->
+<!--                <span th:text="${flowers}"></span> -->
+            <li sec:authorize="!isAuthenticated()"><a th:href="@{/signup}"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+            <li sec:authorize="!isAuthenticated()"><a th:href="@{/login}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+            <li sec:authorize="isAuthenticated()">
+                <a onclick="$('#form').submit();">
+                    <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>&nbsp;Logout
+                </a>
+                <form style="visibility: hidden" id="form" method="post"   th:action="@{/logout}"></form>
+            </li>
+            <li style="margin-right:10px;"></li>
+        </ul>
+    </div>
+</nav>
+
+<div th:fragment ="footer">
+    <br><br><br>
+    <div class="panel-footer" style="color:red;text-align:center;">
+        footer
+        <script type="application/javascript" th:src="@{/js/new-comment.js}"></script>
+    </div>
+</div>
+
+
+
+</html>
+
+<!--<th sec:authorize="hasAnyRole('ROLE_USER','ROLE_ADMIN')">View</th>-->
+<!--<th sec:authorize="hasRole('ROLE_ADMIN')">Edit</th>-->
+<!--<th sec:authorize="hasRole('ROLE_ADMIN')">Delete</th>-->

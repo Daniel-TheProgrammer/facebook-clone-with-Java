@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html  lang="en"
+       xmlns:th="http://www.thymeleaf.org"
+       xmlns:sec="http://www.thymeleaf.org/extras/spring-security" >
+
+<head th:replace="main/layout :: header"></head>
+<body>
+
+<nav th:replace="main/layout :: navbar"></nav>
+
+<!---->
+<div th:with="allComments=${post.comments}}"></div>
+<div th:text="${allComments}"> yyyy </div>
+
+<div th:fragment="comments" class="row" th:each="comment : ${post.comments}">
+    <div class="comment-body-inner">
+        <div class="row" >
+            <div class="col-sm-2" for="text"></div>
+            <div class="col-sm-8" id="comment-top">
+                <!--avatar -->
+                <div class="row" >
+                    <!-- avatar -->
+                    <div class="col-sm-8" >
+                        <div class="post-avatar">
+                                    <span th:if="${comment.profile.avatars}">
+                                    <div th:each="ava,iterStat : ${comment.profile.avatars}" >
+                                        <!--                                <span th:text="${iterStat.index}"></span><br>-->
+                                        <!--                                <span th:text="${iterStat.size}"></span><br>-->
+                                        <span th:if="${iterStat.index == (iterStat.size)- 1}">
+                                            <img th:src="@{|/uploads/${ava.path}|}" class="img-circle"  style="width:100%">
+                                        </span>
+                                    </div>
+                                    </span>
+                            <span th:if="${comment.profile.avatars.size()< 1}">
+                                        <img th:src="@{/img/bird150.jpg}" class="img-circle" style="width:100%">
+                                    </span>
+                        </div>
+                        <!-- name -->
+                        <div class="post-name-date">
+                            <a th:href="@{|/profile/${comment.profile.id}|}">
+                                <span style="color:black;font-size: 16px;weight:bold;margin:5px10px;" th:text="${comment.profile.user.email.split('@')[0]}"></span>
+                            </a>
+                            &nbsp;<span th:text="${#dates.format(comment.added, 'dd-MMM-yyyy')}"></span>
+                        </div>
+                    </div>
+                    <!-- edit -->
+                    <div class="col-sm-4" >
+                        <div class="post-edit" >
+                            <span sec:authorize="isAuthenticated()" th:if="${comment.profile.id} == ${userId}" >
+                                <a th:href="@{|/comment/delete/${comment.id}|}"> delete </a>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" >
+                    <div class="rounded-sm" id="comment-body-inner">
+                        <span th:text="${comment.text}"></span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!--            <div class="row" >-->
+        <!--                <div class="control-label col-sm-2" for="text"></div>-->
+        <!--                <div class="col-sm-8" >-->
+        <!--                    <div class="comment-body-inner">-->
+        <!--                        &lt;!&ndash;                            <span th:text="${comment.id}"></span>&ndash;&gt;-->
+        <!--                        <span th:text="${comment.text}"></span>-->
+        <!--                        &lt;!&ndash;                            <span th:text="${comment.id}"></span>&ndash;&gt;-->
+        <!--                    </div>-->
+        <!--                </div>-->
+        <!--            </div>-->
+    </div>
+</div>
+<!-- -->
+
+
+
+
+
+
+<!---->
+</body>
+</html>

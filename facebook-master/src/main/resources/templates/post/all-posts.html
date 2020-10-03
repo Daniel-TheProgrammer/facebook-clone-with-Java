@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en" >
+
+<head th:replace="main/layout :: header"></head>
+    <body>
+
+        <nav th:replace="main/layout :: navbar"></nav>
+
+        <div class="container">
+                <div class="panel panel-info">
+                    <div class="panel-heading" th:if="${ postCount > 0 }" style="text-align:center;">
+                        <span th:text="${postCount}"> </span><span> posts </span>
+                    </div>
+
+                    <div class="panel-heading" th:if="${ postCount <= 0 }" style="text-align:center;">
+                        <span> No post </span><a th:href="@{/addpost}">Add a post </a>
+                    </div>
+
+                    <div class="panel-body">
+                        <div th:each="post : ${posts}" >
+                            <!--  -->
+                            <div th:replace="post/post-layout :: posts"></div>
+                        </div>
+                    </div>
+
+        <!--            <div class="panel-heading"   style="text-align:center;">-->
+        <!--                 page -->
+        <!--            </div>-->
+                </div>
+            </div>
+        </div>
+            <!-- end of container  -->
+
+        <div th:replace="main/layout :: footer"></div>
+
+    </body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en" >
+
+<head th:replace="main/layout :: header"></head>
+<body>
+<!--<nav class="navbar navbar-inverse"> </nav>-->
+<nav th:replace="main/layout :: navbar"></nav>
+
+
+<div class="container">
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <a th:href="@{|/profile/${post.profile.id}|}">  <span th:text="${post.profile.user.email.split('@')[0]}"></span></a>  post#:&nbsp;<span th:text="${post.id}"> </span> &nbsp;&nbsp;date:&nbsp;<span th:text="${#dates.format(post.added, 'dd-MMM-yyyy')}"></span>
+        </div>
+        <!--        -->
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-sm-8" style="">
+                    <span th:text="${post.text}"></span>
+                </div>
+                <div class="col-sm-4" >
+                    <a th:href="@{|/editpost/${post.id}|}"> edit </a><a th:href="@{|/delete/${post.id}|}"> delete </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end of container  -->
+
+<div th:replace="main/layout :: footer"></div>
+</body>
+</html>

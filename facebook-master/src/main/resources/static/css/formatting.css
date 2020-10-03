@@ -1,0 +1,153 @@
+.error {
+    color: red;
+    font-style: italic;
+}
+
+ .bg-1 {
+    /*padding: 20px 0;
+    background-color: #1abc9c; /* Green */
+    /*background-color: #337ab7;
+    color: #ffffff; */
+ }
+
+.bg-2 {
+
+  /*
+    background-color: #474e5d; /* Dark Blue
+    color: #ffffff; */
+}
+
+.bg-3 {
+ text-align: left;
+  /*text-color: #474e5d;
+  font-weight: bold;
+    background-color: #ffffff; /* White
+    color: #555555;*/
+}
+
+.bg-4 {
+    padding: 5px 0px;
+}
+
+.bg-3-label {
+    color:#31708f;
+    font-size: 16px;
+
+}
+
+.modal-header{
+    color: #31708f;
+     background-color: #d9edf7;
+     border-color: #bce8f1;
+}
+
+.modal-title {
+    text-align: center;
+}
+
+.modal-footer {
+    color: #000;
+     background-color: #d9edf7;
+     border-color: #bce8f1;
+}
+
+.post-avatar {
+  display: inline-block;
+  width: 45px;
+  height: 45px;
+  padding: 5px;
+  vertical-align: top;
+}
+
+.post-avatar {
+  display: inline-block;
+  width: 45px;
+  height: 45px;
+  padding: 5px;
+  vertical-align: top;
+}
+
+.post-name-date {
+  display: inline-block;
+  padding: 0 10px;
+}
+
+.post-edit {
+ padding-right: 20px;
+ text-align: right;
+}
+
+.post-body {
+  padding: 10px;
+}
+
+.post-body-inner {
+    margin: 0 20px;
+    padding: 10px;
+    padding-bottom:0;
+  border-top: 1px solid #d9edf7;
+}
+
+.profile-avatar {
+width: 250px;
+height: 250px;
+padding: 10px;
+}
+
+
+.profile-card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 300px;
+  margin: auto;
+  text-align: center;
+  font-family: arial;
+}
+
+.profile-card-title {
+  color: grey;
+  font-size: 18px;
+}
+
+.profile-card-link-div {
+margin: 24px 0;
+}
+
+.profile-card-city {
+font-size: 16px;
+}
+
+.profile-card-button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+}
+
+.profile-card-link-div a {
+  text-decoration: none;
+  font-size: 22px;
+  color: black;
+}
+
+.profile-card-button:hover, a:hover {
+  opacity: 0.7;
+}
+
+#comment-top {
+  border-top: 1px solid #d9edf7;
+}
+
+#comment-body-inner {
+    padding: 0 0 5px 50px;
+    background-color: #fafafa;
+    background-color: #f0f0f0;
+    margin-bottom:3px;
+
+}
+

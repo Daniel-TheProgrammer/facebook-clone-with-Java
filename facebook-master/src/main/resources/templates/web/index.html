@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>index</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <meta th:name="_csrf" th:content="${_csrf.token}"/>
+    <meta th:name="_csrf_header" th:content="${_csrf.headerName}"/>
+</head>
+<body>
+
+<!--<form action="create"  method="post" th:object="${formData}">-->
+<!--    Name: <input type="text" th:field="${formData.name}" /> <br>-->
+<!--    age: <input type="text" th:field="${formData.age}" /> <br>-->
+<!--    Employed: <input type="checkbox" th:field="${formData.employed}" th:value="true"/> <br>-->
+<!--    Gender: <br>-->
+<!--        male:<input type="radio" th:field="${formData.gender}" th:value="male"/><br>-->
+<!--        female<input type="radio" th:field="${formData.gender}" th:value="female"/><br>-->
+<!--    <input type="submit" value="Submit" />-->
+<!--</form>-->
+
+
+
+<div class="container">
+
+    <h3 style="color:blue">POST-GET AJAX NESTED OBJECT</h3>
+
+    <div class="row col-md-6">
+        <form id="customerForm">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" class="form-control" id="name" placeholder="Enter Name"/>
+                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+            </div>
+            <div class="form-group">
+                <label for="age">Age:</label>
+                <input type="number" min="18" max="100" class="form-control" id="age" placeholder="Enter Age"/>
+            </div>
+            <div class="form-group">
+                <label for="street">Street:</label>
+                <input type="text" class="form-control" id="street" placeholder="Enter Street"/>
+            </div>
+            <div class="form-group">
+                <label for="postcode">PostCode:</label>
+                <input type="text" class="form-control" id="postcode" placeholder="Enter PostCode"/>
+            </div>
+            <button style="margin-bottom:10px" type="submit" class="btn btn-default">Add Customer</button>
+        </form>
+
+        <!-- Table of Adding Customer -->
+        <table id="customerTable" class="table table-bordered table-hover">
+            <thead>
+            <tr>
+                <th>No</th>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Street</th>
+                <th>Postcode</th>
+            </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+
+        <!-- DIV Submit customer  -->
+        <!-- SUBMIT Customer Button to Server -->
+        <button id="postCustomersBtn" style="margin-bottom:10px" type="submit" class="btn btn-default">Post Customers</button>
+
+        <!-- Message result from server -->
+        <div id="postResultDiv" style="margin:10px 0px 10px 0px;">
+        </div>
+
+
+        <!-- Get All Customers from back-end -->
+        <button id="getAllCustomersBtnId" type="button" class="btn btn-primary" style="margin:10px 0px 10px 0px;">Get All Customers</button>
+        <div id="resultGetAllCustomerDiv">
+            <ul class="list-group">
+            </ul>
+        </div>
+    </div>
+</div>
+<script type="application/javascript" th:src="@{/js/postrequest.js}"></script>
+<script type="application/javascript" th:src="@{/js/getrequest.js}"></script>
+</body>
+</html>
